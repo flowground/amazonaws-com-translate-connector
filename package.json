@@ -1,0 +1,15 @@
+{
+    "name": "amazonaws-com-translate-connector",
+    "version": "2017.0.0",
+    "description": "Provides translation between one source language and another of the same set of languages.",
+    "main": "component.json",
+    "dependencies": {
+        "elasticio-node": "0.0.9",
+        "elasticio-sailor-nodejs": "^2.2.1",
+        "swagger-client": "^3.8.22"
+    },
+    "author": {
+        "name": "Deutsche Telekom AG"
+    },
+    "license": "Apache-2.0"
+}

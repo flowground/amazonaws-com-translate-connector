@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "SourceLanguageCode": {
+                    "description": "<p>The language code for the language of the source text. The language must be a language supported by Amazon Translate. </p> <p>To have Amazon Translate determine the source language of your text, you can specify <code>auto</code> in the <code>SourceLanguageCode</code> field. If you specify <code>auto</code>, Amazon Translate will call Amazon Comprehend to determine the source language.</p>",
+                    "maxLength": 5,
+                    "minLength": 2,
+                    "type": "string"
+                },
+                "TargetLanguageCode": {
+                    "description": "The language code requested for the language of the target text. The language must be a language supported by Amazon Translate.",
+                    "maxLength": 5,
+                    "minLength": 2,
+                    "type": "string"
+                },
+                "TerminologyNames": {
+                    "description": "The TerminologyNames list that is taken as input to the TranslateText request. This has a minimum length of 0 and a maximum length of 1.",
+                    "items": {
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^([A-Za-z0-9-]_?)+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "Text": {
+                    "description": "The text to translate. The text string can be a maximum of 5,000 bytes long. Depending on your character set, this may be fewer than 5,000 characters.",
+                    "maxLength": 5000,
+                    "minLength": 1,
+                    "pattern": "[\\P{M}\\p{M}]{1,5000}",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Text",
+                "SourceLanguageCode",
+                "TargetLanguageCode"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,119 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Description": {
+                    "description": "The description of the custom terminology being imported.",
+                    "maxLength": 256,
+                    "pattern": "[\\P{M}\\p{M}]{0,256}",
+                    "type": "string"
+                },
+                "EncryptionKey": {
+                    "description": "The encryption key for the custom terminology being imported.",
+                    "properties": {
+                        "Id": {
+                            "description": "The Amazon Resource Name (ARN) of the encryption key being used to encrypt the custom terminology.",
+                            "maxLength": 400,
+                            "minLength": 1,
+                            "pattern": "(arn:aws((-us-gov)|(-cn))?:kms:)?([a-z]{2}-[a-z]+-\\d:)?(\\d{12}:)?(((key/)?[a-zA-Z0-9-_]+)|(alias/[a-zA-Z0-9:/_-]+))",
+                            "type": "string"
+                        },
+                        "Type": {
+                            "description": "The type of encryption key used by Amazon Translate to encrypt custom terminologies.",
+                            "enum": [
+                                "KMS"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Type",
+                        "Id"
+                    ],
+                    "type": "object"
+                },
+                "MergeStrategy": {
+                    "description": "The merge strategy of the custom terminology being imported. Currently, only the OVERWRITE merge strategy is supported. In this case, the imported terminology will overwrite an existing terminology of the same name.",
+                    "enum": [
+                        "OVERWRITE"
+                    ],
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The name of the custom terminology being imported.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "^([A-Za-z0-9-]_?)+$",
+                    "type": "string"
+                },
+                "TerminologyData": {
+                    "description": "The terminology data for the custom terminology being imported.",
+                    "properties": {
+                        "File": {
+                            "description": "The file containing the custom terminology data.",
+                            "format": "password",
+                            "maxLength": 10485760,
+                            "type": "string"
+                        },
+                        "Format": {
+                            "description": "The data format of the custom terminology. Either CSV or TMX.",
+                            "enum": [
+                                "CSV",
+                                "TMX"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "File",
+                        "Format"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "Name",
+                "MergeStrategy",
+                "TerminologyData"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
